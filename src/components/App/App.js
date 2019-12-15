@@ -1,40 +1,39 @@
 import React, { Component } from 'react';
 // import axios from 'axios';
 import './App.css';
+import Comments from '../Comments/Comments';
+import Header from '../Header/Header';
+import FeelingToday from '../FeelingToday/FeelingToday';
+import Review from '../Review/Review';
+import Support from '../Support/Support';
+import UnderstandingContent from '../UnderstandingContent/UnderstandingContent';
+import ThankYouFeedback from '../ThankYouFeedback/ThankYouFeedback';
+
+import { HashRouter as Router, Route } from 'react-router-dom';
+
 
 class App extends Component {
+
+  // state = {
+  //   feedback:
+  //     feeling = 0,
+  //     understanding = 0,
+  //     support = 0,
+  //     comments = ''
+  // }
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Feedback!</h1>
-          <h4><i>Don't forget it!</i></h4>
-        </header>
+        <Router>
+        <Header />
         <br/>
-        {/* Below is Step 1 Comp*/}
-        <form>
-          <h2> Step 1: How are you feeling today?</h2>
-          <input type="number" placeholder="From 1 to 5" />
-          <button>Next</button>
-        </form>
-        {/* Below is Step 2 Comp*/}
-        <form>
-          <h2> Step 2: How well are you understanding the content?</h2>
-          <input type="number" placeholder="From 1 to 5" />
-          <button>Next</button>
-        </form>
-        {/* Below is Step 3 Comp*/}
-        <form>
-          <h2> Step 3: How well are you being supported?</h2>
-          <input type="number" placeholder="From 1 to 5" />
-          <button>Next</button>
-        </form>
-         {/* Below is Step 4 Comp*/}
-         <form>
-          <h2> Step 4: Any additional comments you want to leave?</h2>
-          <input type="text" placeholder="From 1 to 5" />
-          <button>Next</button>
-        </form>
+          <Route exact path='/' component={FeelingToday} />
+          <Route path='/understanding' component={UnderstandingContent} />
+          <Route path='/comments' component={Comments} />
+          <Route path ='/review' component={Review} /> 
+          <Route path ='/thankyou' component={ThankYouFeedback} /> 
+          <Route path ='/support' component={Support} />
+        </Router>
 
       </div>
     );
