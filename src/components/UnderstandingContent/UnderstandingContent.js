@@ -8,11 +8,11 @@ class UnderstandingContent extends Component {
         this.props.history.push('/support')
     }
     render() {
-        
+
         return (
             <form>
             <h2> Step 2: How well are you understanding the content?</h2>
-            <input type="number" placeholder="From 1 to 5" />
+            <input type="number" onChange={(event)=>this.handleChange(event, 'understanding')} value={this.state.understanding} placeholder="From 1 to 5" />
             <button onClick={this.handleClick}>Next</button>
             </form>
         )

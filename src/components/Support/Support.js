@@ -10,7 +10,7 @@ class Support extends Component {
         return (
         <form>
           <h2> Step 3: How well are you being supported?</h2>
-          <input type="number" placeholder="From 1 to 5" />
+          <input type="number" onChange={(event)=>this.handleChange(event, 'support')} value={this.state.support} placeholder="From 1 to 5" />
           <button onClick={this.handleClick}>Next</button>
         </form>
         )

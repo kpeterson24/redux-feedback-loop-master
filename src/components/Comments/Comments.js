@@ -10,7 +10,7 @@ class Comments extends Component {
         return (
             <form>
                 <h2> Step 4: Any additional comments you want to leave?</h2>
-                <input type="text" placeholder="From 1 to 5" />
+                <input type="text" onChange={(event)=>this.handleChange(event, 'comments')} value={this.state.comments} placeholder="From 1 to 5" />
                 <button onClick={this.handleClick}>Next</button>
             </form>
         )
