@@ -4,18 +4,19 @@ import { connect } from 'react-redux';
 
 class Comments extends Component {
     // will be my post route?
-    submitFormData = () => {
-
-        axios({
-            method: 'POST',
-            url: '/api/order',
-            data: {...this.props.reduxState.}
-        }).catch((err)=>{
-            console.log(err);
-        });
-    }
+    // submitFormData = () => {
+    //     axios({
+    //         method: 'POST',
+    //         url: '/api/order',
+    //         data: {...this.props.reduxState.}
+    //     }).catch((err)=>{
+    //         console.log(err);
+    //     });
+    // }
     render() {
-        // const formData = this.props.
+        // const formData = 
+        //     this.props.reduxState.feelings,
+
         
         return (
             <form onSubmit={ (event) => this.submitFormData(event) }>
