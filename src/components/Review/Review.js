@@ -25,9 +25,9 @@ class Review extends Component {
     render() {
         
         return (
-            <form onSubmit={ (event) => this.submitFormData(event) }>
+            <form onSubmit={(event) => this.submitFormData(event) }>
                 <h2> Please Review Your Feedback</h2>
-                {JSON.stringify(this.props.reduxState.formData)}
+                {/* {JSON.stringify(this.props.reduxState.formData)} */}
                 <p> Feelings: {this.props.reduxState.feeling.feeling}</p>
                 <p> Understanding Content: {this.props.reduxState.understanding.understanding}</p>
                 <p> Support: {this.props.reduxState.support.support}</p>

@@ -10,7 +10,7 @@ class UnderstandingContent extends Component {
       }
 
     handleClick = () => {
-        this.props.dispatch( { type: `SEND_UNDERSTANDING`, payload: this.state} )
+        this.props.dispatch( { type: 'UNDERSTANDING', payload: this.state} )
         this.props.history.push('/support')
     }
 
@@ -25,10 +25,10 @@ class UnderstandingContent extends Component {
     render() {
 
         return (
-            <form>
+            <form onSubmit={(event)=>this.handleSubmit(event)}>
             <h2> Step 2: How well are you understanding the content?</h2>
             <input type="number" onChange={(event)=>this.handleChange(event, 'understanding')} value={this.state.understanding} placeholder="From 1 to 5" />
-            <button onClick={this.handleClick}>Next</button>
+            <button type='button' onClick={this.handleClick}>Next</button>
             </form>
         )
     }

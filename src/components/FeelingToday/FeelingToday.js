@@ -11,7 +11,7 @@ class FeelingToday extends Component {
       }
 
     handleClick = () => {
-        this.props.dispatch( { type: `SEND_FEELING`, payload: this.state} )
+        this.props.dispatch( { type: 'FEELING', payload: this.state} )
         this.props.history.push('/understanding')
     }
 
@@ -24,10 +24,10 @@ class FeelingToday extends Component {
     render() {
         
         return (
-            <form>
+            <form onSubmit={(event)=>this.handleSubmit(event)}>
                 <h2> Step 1: How are you feeling today?</h2>
-                <input type="number" onChange={(event)=>this.handleChange(event, 'feeling')} value={this.state.feeling} placeholder="From 1 to 5" />
-                <button onClick={this.handleClick}>Next</button>
+                <input type="number" onChange={(event)=>this.handleChange(event)} value={this.state.feeling} placeholder="Enter 1 to 5" />
+                <button type='button' onClick={this.handleClick} >Next</button>
             </form>
         )
     }

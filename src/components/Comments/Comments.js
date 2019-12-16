@@ -9,7 +9,7 @@ class Comments extends Component {
       }
 
     handleClick = () => {
-        this.props.dispatch( { type: `SEND_COMMENTS`, payload: this.state} )
+        this.props.dispatch( { type: 'COMMENTS', payload: this.state} )
         this.props.history.push('/review')
     }
 
@@ -23,10 +23,10 @@ class Comments extends Component {
     //begin render
     render() {
         return (
-            <form>
+            <form onSubmit={(event)=>this.handleSubmit(event)}>
                 <h2> Step 4: Any additional comments you want to leave?</h2>
                 <input onChange={(event)=>this.handleChange(event)} value={this.state.comments} placeholder="Let us know!" />
-                <button onClick={this.handleClick}>Next</button>
+                <button type='button' onClick={this.handleClick}>Next</button>
             </form>
         )
     }
