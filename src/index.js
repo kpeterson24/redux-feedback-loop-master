@@ -8,28 +8,29 @@ import {Provider} from 'react-redux';
 import logger from 'redux-logger';
 
 //bring in reducer data
-const feelingReducer = (state = [], action) => {
+const feelingReducer = (state = {feeling: ''}, action) => {
+    console.log(action.payload);
     if (action.type === 'FEELING' ){
-        return {value: action.payload};
+        return {feeling: action.payload.feeling};
     }
     return state;
 }
 
-const understandingReducer = (state = [], action) => {
+const understandingReducer = (state = {understanding: ''}, action) => {
     if (action.type === 'UNDERSTANDING' ){
         return {value: action.payload};
     }
     return state;
 }
 
-const supportReducer = (state = [], action) => {
+const supportReducer = (state = {support: ''}, action) => {
     if (action.type === 'SUPPORT' ){
         return {value: action.payload};
     }
     return state;
 }
 
-const commentsReducer = (state = [], action) => {
+const commentsReducer = (state = {comments: ''}, action) => {
     if (action.type === 'COMMENTS' ){
         return {value: action.payload};
     }

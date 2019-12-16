@@ -22,6 +22,10 @@ class Review extends Component {
             alert(' Error adding feedback!')
         })
     }
+
+    componentDidMount () {
+        console.log('reduxState:',JSON.stringify(this.props.feelings))
+    }
     
     render() {
         console.log(this.props.reduxState);
@@ -29,8 +33,8 @@ class Review extends Component {
         return (
             <form onSubmit={(event) => this.goToFormSuccess(event) }>
                 <h2> Please Review Your Feedback</h2>
-                
-                <p> Feelings: {this.props.feeling}</p>
+                {JSON.stringify(this.props.reduxState)}
+                <p> Feelings: {this.props.feelings.support}</p>
                 <p> Understanding Content: {this.props.understanding}</p>
                 <p> Support: {this.props.support}</p>
                 <p> Additional Comments: {this.props.comments}</p>
@@ -41,11 +45,14 @@ class Review extends Component {
         )
     }
 }
-
+/*
 const putReduxStateOnProps = (reduxState) => ({
     feeling: reduxState.feelingReducer.feeling,
     understanding: reduxState.understandingReducer.understanding,
     support: reduxState.supportReducer.support,
     comment: reduxState.commentsReducer.comments,
+});*/
+const putReduxStateOnProps = (reduxState) => ({
+    feelings: reduxState.feelingReducer
 });
 export default withRouter(connect(putReduxStateOnProps)(Review));
