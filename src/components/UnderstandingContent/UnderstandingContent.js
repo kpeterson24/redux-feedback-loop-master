@@ -4,9 +4,24 @@ import { connect } from 'react-redux';
 
 
 class UnderstandingContent extends Component {
+
+    state = {
+        understanding: ''
+      }
+
     handleClick = () => {
+        this.props.dispatch( { type: `SEND_UNDERSTANDING`, payload: this.state} )
         this.props.history.push('/support')
     }
+
+    handleChange = (event) => {
+        console.log('in handleChange with:', event.target.value);
+        this.setState({
+            understanding: event.target.value
+        })
+    }
+
+    //begin render
     render() {
 
         return (

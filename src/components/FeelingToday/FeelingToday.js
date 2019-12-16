@@ -5,17 +5,24 @@ import { connect } from 'react-redux';
 
 class FeelingToday extends Component {
 
-    handleClick = () => {
-        this.props.dispatch( { type: `SEND_FEEDBACK`, payload: this.state.feeling } )
+    //set state
+    state = {
+        feeling: ''
+      }
 
+    handleClick = () => {
+        this.props.dispatch( { type: `SEND_FEELING`, payload: this.state} )
         this.props.history.push('/understanding')
     }
 
-    // sendFormInfo = () => {
-    //     this.props.dispatch( { type: `SEND_FEEDBACK`, payload: this.state.feeling } )
-    // }
-
+    handleChange = (event) => {
+        console.log('in handleChange with:', event.target.value);
+        this.setState({
+            feeling: event.target.value
+        })
+    }
     render() {
+        
         return (
             <form>
                 <h2> Step 1: How are you feeling today?</h2>

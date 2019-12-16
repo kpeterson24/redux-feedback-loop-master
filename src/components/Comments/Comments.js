@@ -3,14 +3,29 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class Comments extends Component {
+
+    state = {
+        understanding: ''
+      }
+
     handleClick = () => {
+        this.props.dispatch( { type: `SEND_COMMENTS`, payload: this.state} )
         this.props.history.push('/review')
     }
+
+    handleChange = (event) => {
+        console.log('in handleChange with:', event.target.value);
+        this.setState({
+            comments: event.target.value
+        })
+    }
+
+    //begin render
     render() {
         return (
             <form>
                 <h2> Step 4: Any additional comments you want to leave?</h2>
-                <input type="text" onChange={(event)=>this.handleChange(event, 'comments')} value={this.state.comments} placeholder="From 1 to 5" />
+                <input onChange={(event)=>this.handleChange(event)} value={this.state.comments} placeholder="Let us know!" />
                 <button onClick={this.handleClick}>Next</button>
             </form>
         )

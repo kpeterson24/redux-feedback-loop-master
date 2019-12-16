@@ -9,7 +9,7 @@ import logger from 'redux-logger';
 
 //bring in reducer data
 const feeling = (state = {value: ''}, action) => {
-    if (action.type === 'feeling' ){
+    if (action.type === 'FEELING' ){
         return {value: action.payload};
     }else if (action.type === 'reset'){
         return {value:''}
@@ -18,7 +18,7 @@ const feeling = (state = {value: ''}, action) => {
 }
 
 const understanding = (state = {value: ''}, action) => {
-    if (action.type === 'understanding' ){
+    if (action.type === 'UNDERSTANDING' ){
         return {value: action.payload};
     }else if (action.type === 'reset'){
         return {value:''}
@@ -27,7 +27,7 @@ const understanding = (state = {value: ''}, action) => {
 }
 
 const support = (state = {value: ''}, action) => {
-    if (action.type === 'support' ){
+    if (action.type === 'SUPPORT' ){
         return {value: action.payload};
     }else if (action.type === 'reset'){
         return {value:''}
@@ -36,7 +36,7 @@ const support = (state = {value: ''}, action) => {
 }
 
 const comments = (state = {value: ''}, action) => {
-    if (action.type === 'comments' ){
+    if (action.type === 'COMMENTS' ){
         return {value: action.payload};
     }else if (action.type === 'reset'){
         return {value:''}

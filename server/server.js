@@ -9,7 +9,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('build'));
 
 /** ---------- EXPRESS ROUTES ---------- **/
-
+const routerFormData = require('./routes/formdata.router');
+app.use('/feedback', routerFormData);
 
 /** ---------- START SERVER ---------- **/
 app.listen(PORT, () => {

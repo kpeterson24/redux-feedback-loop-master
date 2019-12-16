@@ -3,9 +3,23 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class Support extends Component {
+    state = {
+        support: ''
+      }
+
     handleClick = () => {
+        this.props.dispatch( { type: `SEND_SUPPORT`, payload: this.state} )
         this.props.history.push('/comments')
     }
+
+    handleChange = (event) => {
+        console.log('in handleChange with:', event.target.value);
+        this.setState({
+            support: event.target.value
+        })
+    }
+
+    //begin render
     render() {
         return (
         <form>
