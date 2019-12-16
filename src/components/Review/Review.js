@@ -6,41 +6,46 @@ import axios from 'axios';
 
 class Review extends Component {
 
-    postForm = () => {
-        const formData = {
-            feeling: this.props.reduxState.feeling.feeling,
-            understanding: this.props.reduxState.understanding.understanding,
-            support: this.props.reduxState.support.support,
-            comments: this.props.reduxState.comments.comments
+    goToFormSuccess = () => {
+        let formFeedback = {
+            feeling: this.props.feeling,
+            understanding: this.props.understanding,
+            support: this.props.support,
+            comments: this.props.comments
         }
-        axios.post('/feedback', formData).then( response => {
-            this.props.history.push('/success');
+        axios.post('/feedback', formFeedback)
+        .then( response => {
+            console.log(response);
+            this.props.history.push('/thankyou');
         }).catch(error => {
-            console.log(error);
+            console.log('error with posting feedback', error);
             alert(' Error adding feedback!')
-            
         })
     }
     
     render() {
-        
+        console.log(this.props.reduxState);
+
         return (
-            <form onSubmit={(event) => this.submitFormData(event) }>
+            <form onSubmit={(event) => this.goToFormSuccess(event) }>
                 <h2> Please Review Your Feedback</h2>
-                {/* {JSON.stringify(this.props.reduxState.formData)} */}
-                <p> Feelings: {this.props.reduxState.feeling.feeling}</p>
-                <p> Understanding Content: {this.props.reduxState.understanding.understanding}</p>
-                <p> Support: {this.props.reduxState.support.support}</p>
-                <p> Additional Comments: {this.props.reduxState.comments.comments}</p>
+                
+                <p> Feelings: {this.props.feeling}</p>
+                <p> Understanding Content: {this.props.understanding}</p>
+                <p> Support: {this.props.support}</p>
+                <p> Additional Comments: {this.props.comments}</p>
 
                 
-                <button onClick={this.submitFormData}>Submit</button>
+                <button type="button" onClick={this.goToFormSuccess}>Submit</button>
             </form>
         )
     }
 }
 
 const putReduxStateOnProps = (reduxState) => ({
-    reduxState
+    feeling: reduxState.feelingReducer.feeling,
+    understanding: reduxState.understandingReducer.understanding,
+    support: reduxState.supportReducer.support,
+    comment: reduxState.commentsReducer.comments,
 });
 export default withRouter(connect(putReduxStateOnProps)(Review));

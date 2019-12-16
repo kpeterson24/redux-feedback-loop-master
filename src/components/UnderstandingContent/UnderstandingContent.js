@@ -14,10 +14,10 @@ class UnderstandingContent extends Component {
         this.props.history.push('/support')
     }
 
-    handleChange = (event) => {
-        console.log('in handleChange with:', event.target.value);
+    handleChange = (event, understanding) => {
+        console.log('in handleChange with:', event.target.value, understanding);
         this.setState({
-            understanding: event.target.value
+            [understanding]: event.target.value
         })
     }
 

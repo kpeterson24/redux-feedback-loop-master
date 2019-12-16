@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 class Comments extends Component {
 
     state = {
-        understanding: ''
+        comments: ''
       }
 
     handleClick = () => {
@@ -13,10 +13,10 @@ class Comments extends Component {
         this.props.history.push('/review')
     }
 
-    handleChange = (event) => {
-        console.log('in handleChange with:', event.target.value);
+    handleChange = (event, comments) => {
+        console.log('in handleChange with:', event.target.value, comments);
         this.setState({
-            comments: event.target.value
+            [comments]: event.target.value
         })
     }
 
@@ -25,7 +25,7 @@ class Comments extends Component {
         return (
             <form onSubmit={(event)=>this.handleSubmit(event)}>
                 <h2> Step 4: Any additional comments you want to leave?</h2>
-                <input onChange={(event)=>this.handleChange(event)} value={this.state.comments} placeholder="Let us know!" />
+                <input type="text" onChange={(event)=>this.handleChange(event, 'comments')} value={this.state.comments} placeholder="Let us know!" />
                 <button type='button' onClick={this.handleClick}>Next</button>
             </form>
         )

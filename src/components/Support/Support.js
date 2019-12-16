@@ -12,10 +12,10 @@ class Support extends Component {
         this.props.history.push('/comments')
     }
 
-    handleChange = (event) => {
-        console.log('in handleChange with:', event.target.value);
+    handleChange = (event, support) => {
+        console.log('in handleChange with:', event.target.value, support);
         this.setState({
-            support: event.target.value
+            [support]: event.target.value
         })
     }
 

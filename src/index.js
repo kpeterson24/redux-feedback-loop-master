@@ -8,38 +8,30 @@ import {Provider} from 'react-redux';
 import logger from 'redux-logger';
 
 //bring in reducer data
-const feeling = (state = {value: ''}, action) => {
+const feelingReducer = (state = [], action) => {
     if (action.type === 'FEELING' ){
         return {value: action.payload};
-    }else if (action.type === 'reset'){
-        return {value:''}
     }
     return state;
 }
 
-const understanding = (state = {value: ''}, action) => {
+const understandingReducer = (state = [], action) => {
     if (action.type === 'UNDERSTANDING' ){
         return {value: action.payload};
-    }else if (action.type === 'reset'){
-        return {value:''}
     }
     return state;
 }
 
-const support = (state = {value: ''}, action) => {
+const supportReducer = (state = [], action) => {
     if (action.type === 'SUPPORT' ){
         return {value: action.payload};
-    }else if (action.type === 'reset'){
-        return {value:''}
     }
     return state;
 }
 
-const comments = (state = {value: ''}, action) => {
+const commentsReducer = (state = [], action) => {
     if (action.type === 'COMMENTS' ){
         return {value: action.payload};
-    }else if (action.type === 'reset'){
-        return {value:''}
     }
     return state;
 }
@@ -47,10 +39,10 @@ const comments = (state = {value: ''}, action) => {
 //combine reducers...
 const storeInstance = createStore(
     combineReducers({
-        feeling,
-        understanding,
-        support,
-        comments
+        feelingReducer,
+        understandingReducer,
+        supportReducer,
+        commentsReducer
     }),
     applyMiddleware(logger)
 );

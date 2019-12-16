@@ -15,10 +15,10 @@ class FeelingToday extends Component {
         this.props.history.push('/understanding')
     }
 
-    handleChange = (event) => {
-        console.log('in handleChange with:', event.target.value);
+    handleChange = (event, feeling) => {
+        console.log('in handleChange with:', event.target.value, feeling);
         this.setState({
-            feeling: event.target.value
+            [feeling]: event.target.value
         })
     }
     render() {
@@ -26,7 +26,7 @@ class FeelingToday extends Component {
         return (
             <form onSubmit={(event)=>this.handleSubmit(event)}>
                 <h2> Step 1: How are you feeling today?</h2>
-                <input type="number" onChange={(event)=>this.handleChange(event)} value={this.state.feeling} placeholder="Enter 1 to 5" />
+                <input type="number" onChange={(event)=>this.handleChange(event, 'feeling')} value={this.state.feeling} placeholder="Enter 1 to 5" />
                 <button type='button' onClick={this.handleClick} >Next</button>
             </form>
         )
